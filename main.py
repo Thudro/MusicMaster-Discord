@@ -4,7 +4,6 @@ from pypresence import Presence
 import time
 import requests
 
-
 from winsdk.windows.media.control import \
     GlobalSystemMediaTransportControlsSessionManager as MediaManager
 
@@ -25,7 +24,6 @@ async def get_media_info():
         return info_dict["title"], info_dict["artist"]
 
 def fetch_album_art(song_details):
-
     print("[MusicShower Debug]: Getting image from iTunes")
     # Url dosnt like spaces
     query = song_details.replace(" ", "+")
