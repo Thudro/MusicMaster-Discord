@@ -52,12 +52,6 @@ def main():
     
     print("[MusicShower Debug]: WinSDK info retrived")
 
-    client_id = 'Client ID Here'  # Replace with your actual client ID from Discord Developer Portal (https://discord.com/developers/applications)
-    rpc = Presence(client_id)
-    rpc.connect()
-
-    print("[MusicShower Debug]: Discord RPC connected")
-
     rpc.update(
         details=title,
         state= artist,
@@ -73,6 +67,13 @@ def main():
     print("[MusicShower Debug]: Discord RPC Updated")
 
 if __name__ == '__main__':
+    #RPC connection only needs to be made once. 
+    client_id = 'Client ID Here'  # https://discord.com/developers/applications
+    rpc = Presence(client_id)
+    rpc.connect()
+
+    print("[MusicShower Debug]: Discord RPC connected")
+
     while True:
         main()
         time.sleep(30)
