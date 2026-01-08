@@ -55,8 +55,7 @@ def main():
         state= artist,
         large_image= fetch_album_art(title + " " + artist),
         large_text="Listening to some tunes!",
-        small_image="https://static.thenounproject.com/png/2535504-200.png",
-        small_text="Using MusicShower Rich Presence By Thudro",
+        small_text="WinSDK Music Rich Presence By Thudro",
         start=1,
         end=1,
         buttons=[{"label": "Play Song", "url": "https://www.google.com"}]
