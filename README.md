@@ -1,10 +1,11 @@
-# musicShower
-Displays currently playing music from a machine.
-Its not the best, but it works. 
+# musicShower - Discord RPC Branch
+Using the same WinSDK and iTunes album image as the main musicShower branch, but removes all flask server components and instead uses Discord rich presence to show the playing music in your Discord Profile.
 
-Please note: This is just a little tinker with flask as I wanted a way to see my now playing from another device. It isn;t intended to be public, however I don't see why it wouldn't work for someone else
+How To Use: 
+1. Go to the Discord Developer Portal (https://discord.com/developers/applications)
+2. Create a new application
+3. Copy your "Application ID" from the general information tab
+4. Replace "Client ID Here" with your application ID.
+5. Enjoy!
 
-How to use:
-1. Run main.py in the server folder. The host and port config are located at the bottom of the file
-2. Configure ip in Client\main.py to match the ip and port set in the server file.
-3. The server should be running on http://localhost:8000 (unless configured otherwise)
+   
