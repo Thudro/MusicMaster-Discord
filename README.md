@@ -5,7 +5,8 @@ How To Use:
 1. Go to the Discord Developer Portal (https://discord.com/developers/applications)
 2. Create a new application
 3. Copy your "Application ID" from the general information tab
-4. Replace "Client ID Here" with your application ID.
-5. Enjoy!
+4. Create an environment variable named "DRP_ID", and set the value to your application ID
+5. Run it
+6. Enjoy!
 
    
