@@ -1,6 +1,7 @@
-from flask import Flask, jsonify
+from os import environ
 import asyncio
 from pypresence import Presence
+from pypresence.types import ActivityType
 import time
 import requests
 
@@ -51,21 +52,23 @@ def main():
     print("[MusicShower Debug]: WinSDK info retrived")
 
     rpc.update(
+        name=title + " - " + artist,
         details=title,
         state= artist,
         large_image= fetch_album_art(title + " " + artist),
-        large_text="Listening to some tunes!",
+        large_text='Application Name Here!',
         small_text="WinSDK Music Rich Presence By Thudro",
         start=1,
         end=1,
-        buttons=[{"label": "Play Song", "url": "https://www.google.com"}]
+        buttons=[{"label": "Play Song", "url": "https://www.google.com"}],
+        activity_type=ActivityType.LISTENING
     )
 
     print("[MusicShower Debug]: Discord RPC Updated")
 
 if __name__ == '__main__':
     #RPC connection only needs to be made once. 
-    client_id = 'Client ID Here'  # https://discord.com/developers/applications
+    client_id = environ.get('DRP_ID')  # https://discord.com/developers/applications
     rpc = Presence(client_id)
     rpc.connect()
 
