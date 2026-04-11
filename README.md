@@ -1,5 +1,7 @@
-# musicShower - Discord RPC Branch
-Using the same WinSDK and iTunes album image as the main musicShower branch, but removes all flask server components and instead uses Discord rich presence to show the playing music in your Discord Profile.
+# Music Master!
+Using the same WinSDK to retrieve music information and display it on your Discord profile using rich presence.
+
+This works with anything playing on your Windows machine, whether that be music applications or anything in your browser.
 
 How To Use: 
 1. Go to the Discord Developer Portal (https://discord.com/developers/applications)
