@@ -17,12 +17,7 @@ async def get_media_info():
     if current_session:  # there needs to be a media session running
         info = await current_session.try_get_media_properties_async()
 
-        #This adds ALL the data from the sdk to a dictionary
-        info_dict = {song_attr: info.__getattribute__(song_attr) for song_attr in dir(info) if song_attr[0] != '_'}
-        print(info_dict)
-
-        #We only want the title and artist tho
-        return info_dict["title"], info_dict["artist"]
+        return info.title, info.artist
 
 def fetch_album_art(song_details):
     print("[MusicShower Debug]: Getting image from iTunes")
