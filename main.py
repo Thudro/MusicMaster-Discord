@@ -25,7 +25,7 @@ async def get_media_info():
         return None, None
 
 def fetch_album_art(song_details):
-    print("[MusicShower Debug]: Getting image from iTunes")
+    print("[MusicMaster Debug]: Getting image from iTunes")
     # Url dosnt like spaces
     query = song_details.replace(" ", "+")
     url = f"https://itunes.apple.com/search?term={query}&entity=song&limit=1"
@@ -50,16 +50,18 @@ def main():
     title, artist = asyncio.run(get_media_info())
 
     if not title or not artist:
-        print("[MusicShower Debug]: No media session found, clearing RPC")
+        print("[MusicMaster Debug]: No media session found, clearing RPC")
         rpc.clear()
         return
     
-    print("[MusicShower Debug]: WinSDK info retrived")
+    print("[MusicMaster Debug]: WinSDK info retrived")
 
     global cachedTitle, cachedArtist
 
     if title == cachedTitle and artist == cachedArtist:
-            print("[MusicShower Debug]: No change in song, skipping RPC update")
+            print("[MusicMaster Debug]: No change in song, skipping RPC update")
+            cachedArtist = None
+            cachedTitle = None
             return
 
     rpc.update(
@@ -67,15 +69,13 @@ def main():
         details=title,
         state= artist,
         large_image= fetch_album_art(title + " " + artist),
-        large_text='Application Name Here!',
-        small_text="WinSDK Music Rich Presence By Thudro",
         start=1,
         end=1,
         buttons=[{"label": "Play Song", "url": "https://www.google.com"}],
         activity_type=ActivityType.LISTENING
     )
 
-    print("[MusicShower Debug]: Discord RPC Updated")
+    print("[MusicMaster Debug]: Discord RPC Updated")
 
     cachedTitle = title
     cachedArtist = artist
@@ -86,8 +86,8 @@ if __name__ == '__main__':
     rpc = Presence(client_id)
     rpc.connect()
 
-    print("[MusicShower Debug]: Discord RPC connected")
+    print("[MusicMaster Debug]: Discord RPC connected")
 
     while True:
         main()
-        time.sleep(30)
+        time.sleep(10)
