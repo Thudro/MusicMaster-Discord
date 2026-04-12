@@ -18,6 +18,8 @@ async def get_media_info():
         info = await current_session.try_get_media_properties_async()
 
         return info.title, info.artist
+    else:
+        return None, None
 
 def fetch_album_art(song_details):
     print("[MusicShower Debug]: Getting image from iTunes")
@@ -43,6 +45,11 @@ def fetch_album_art(song_details):
 
 def main():
     title, artist = asyncio.run(get_media_info())
+
+    if not title or not artist:
+        print("[MusicShower Debug]: No media session found, clearing RPC")
+        rpc.clear()
+        return
     
     print("[MusicShower Debug]: WinSDK info retrived")
 
