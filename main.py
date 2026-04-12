@@ -8,6 +8,9 @@ import requests
 from winsdk.windows.media.control import \
     GlobalSystemMediaTransportControlsSessionManager as MediaManager
 
+cachedArtist = None
+cachedTitle = None
+
 #This helped a lot, just changing the winrt to winsdk 
 #https://github.com/curtisgibby/winrt-slack-python/blob/master/winrt-track-change-to-slack.py#L177-L183
 
@@ -53,6 +56,12 @@ def main():
     
     print("[MusicShower Debug]: WinSDK info retrived")
 
+    global cachedTitle, cachedArtist
+
+    if title == cachedTitle and artist == cachedArtist:
+            print("[MusicShower Debug]: No change in song, skipping RPC update")
+            return
+
     rpc.update(
         name=title + " - " + artist,
         details=title,
@@ -67,6 +76,9 @@ def main():
     )
 
     print("[MusicShower Debug]: Discord RPC Updated")
+
+    cachedTitle = title
+    cachedArtist = artist
 
 if __name__ == '__main__':
     #RPC connection only needs to be made once. 
