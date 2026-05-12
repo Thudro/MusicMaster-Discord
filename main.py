@@ -65,13 +65,12 @@ def main():
             return
 
     rpc.update(
-        name=title + " - " + artist,
+        name=(title + " - " + artist)[:128], # Discord has a 128 character limit for the name field, so trim it if it's too long
         details=title,
         state= artist,
         large_image= fetch_album_art(title + " " + artist),
         start=1,
         end=1,
-        buttons=[{"label": "Play Song", "url": "https://www.google.com"}],
         activity_type=ActivityType.LISTENING
     )
 
