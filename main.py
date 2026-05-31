@@ -60,8 +60,6 @@ def main():
 
     if title == cachedTitle and artist == cachedArtist:
             print("[MusicMaster Debug]: No change in song, skipping RPC update")
-            cachedArtist = None
-            cachedTitle = None
             return
 
     rpc.update(
